@@ -1,24 +1,30 @@
 package com.keyin.aircraft;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+
+@Entity
 public class Aircraft {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String type;
     private String airlineName;
     private String numOfPassengers;
 
-    public Aircraft(long id, String type, String airlineName, String numOfPassengers) {
-        this.id = id;
+    public Aircraft(String type, String airlineName, String numOfPassengers) {
         this.type = type;
         this.airlineName = airlineName;
         this.numOfPassengers = numOfPassengers;
     }
 
-    public long getId() {
-        return id;
-    }
+    public Aircraft() {}
 
-    public void setId(long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getAirlineName() {
