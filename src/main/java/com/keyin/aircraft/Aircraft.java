@@ -1,23 +1,23 @@
 package com.keyin.aircraft;
 
 public class Aircraft {
-    private String id;
+    private long id;
     private String type;
     private String airlineName;
     private String numOfPassengers;
 
-    public Aircraft(String id, String type, String airlineName, String numOfPassengers) {
+    public Aircraft(long id, String type, String airlineName, String numOfPassengers) {
         this.id = id;
         this.type = type;
         this.airlineName = airlineName;
         this.numOfPassengers = numOfPassengers;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
