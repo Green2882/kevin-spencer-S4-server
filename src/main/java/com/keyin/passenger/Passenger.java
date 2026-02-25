@@ -1,23 +1,23 @@
 package com.keyin.passenger;
 
 public class Passenger {
-    private String id;
+    private long id;
     private String firstName;
     private String lastName;
     private String phoneNum;
 
-    public Passenger(String id, String firstName, String lastName, String phoneNum) {
+    public Passenger(long id, String firstName, String lastName, String phoneNum) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
