@@ -14,8 +14,7 @@ public class City {
     private String state;
     private int population;
 
-    public City(Long id, String name, String state, int population) {
-        this.id = id;
+    public City(String name, String state, int population) {
         this.name = name;
         this.state = state;
         this.population = population;
@@ -25,10 +24,6 @@ public class City {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
