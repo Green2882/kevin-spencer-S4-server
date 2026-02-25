@@ -1,25 +1,26 @@
 package com.keyin.passenger;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Passenger {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String firstName;
     private String lastName;
     private String phoneNum;
 
-    public Passenger(long id, String firstName, String lastName, String phoneNum) {
-        this.id = id;
+    public Passenger(String firstName, String lastName, String phoneNum) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    public long getId() { return id; }
 
     public String getFirstName() {
         return firstName;
