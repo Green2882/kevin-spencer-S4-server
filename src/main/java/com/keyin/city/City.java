@@ -1,23 +1,33 @@
 package com.keyin.city;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class City {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String state;
     private int population;
 
-    public City(String id, String name, String state, int population) {
+    public City(Long id, String name, String state, int population) {
         this.id = id;
         this.name = name;
         this.state = state;
         this.population = population;
     }
 
-    public String getId() {
+    public City() {}
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
