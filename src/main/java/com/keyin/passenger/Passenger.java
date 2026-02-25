@@ -1,9 +1,10 @@
 package com.keyin.passenger;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.keyin.aircraft.Aircraft;
+import com.keyin.city.City;
+import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Passenger {
@@ -13,12 +14,18 @@ public class Passenger {
     private String firstName;
     private String lastName;
     private String phoneNum;
+    @ManyToOne
+    private City city;
+    @ManyToMany
+    private Set<Aircraft> aircraft = new HashSet<>();
 
     public Passenger(String firstName, String lastName, String phoneNum) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
     }
+
+    public Passenger() {}
 
     public long getId() { return id; }
 
@@ -44,6 +51,22 @@ public class Passenger {
 
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public Set<Aircraft> getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(Set<Aircraft> aircraft) {
+        this.aircraft = aircraft;
     }
 
     @Override
