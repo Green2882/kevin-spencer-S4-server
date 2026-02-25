@@ -1,21 +1,21 @@
 package com.keyin.airport;
 
 public class Airport {
-    private String id;
+    private long id;
     private String name;
     private String code;
 
-    public Airport(String id, String name, String code) {
+    public Airport(long id, String name, String code) {
         this.id = id;
         this.name = name;
         this.code = code;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
