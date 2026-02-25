@@ -1,22 +1,30 @@
 package com.keyin.airport;
 
+import com.keyin.city.City;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity
 public class Airport {
-    private long id;
+    @Id
+    @GeneratedValue
+    private Long id;
+    @ManyToOne
+    private City city;
     private String name;
     private String code;
 
-    public Airport(long id, String name, String code) {
-        this.id = id;
+    public Airport(String name, String code) {
         this.name = name;
         this.code = code;
     }
 
-    public long getId() {
-        return id;
-    }
+    public Airport() {}
 
-    public void setId(long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
