@@ -10,8 +10,6 @@ public class CityService {
 
     @Autowired
     private CityRestRepository cityRestRepository;
-    @Autowired
-    private CityService cityService;
 
     public City createCity(City city){
         return cityRestRepository.save(city);
