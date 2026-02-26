@@ -10,4 +10,8 @@ public interface AircraftRestRepository extends CrudRepository<Aircraft, Long> {
     Optional<Aircraft> getAircraftByType(String type);
 
     Optional<Aircraft> findAircraftByType(String type);
+
+    Optional<Aircraft> findAircraftByAirlineName(String airlineName);
+
+    Optional<Aircraft> findAircraftByNumOfPassengers(String numOfPassengers);
 }
