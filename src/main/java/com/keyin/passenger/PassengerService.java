@@ -10,8 +10,6 @@ public class PassengerService {
 
     @Autowired
     private PassengerRestRepository passengerRestRepository;
-    @Autowired
-    private PassengerService passengerService;
 
     public Passenger createPassenger(Passenger city){
         return passengerRestRepository.save(city);
