@@ -12,19 +12,27 @@ public class AircraftService {
     @Autowired
     private AircraftRestRepository aircraftRestRepository;
 
-    public Iterable<Aircraft> getAllAircraft() {
-        return aircraftRestRepository.findAll();
-    }
+    public Aircraft createAircraft(Aircraft aircraft) { return aircraftRestRepository.save(aircraft);}
 
-    public Aircraft saveAircraft(Aircraft aircraft) {
-        return aircraftRestRepository.save(aircraft);
-    }
+    public Iterable<Aircraft> findAllAircraft() {return aircraftRestRepository.findAll();}
 
-    public Optional<Aircraft> getAircraftById(Long id) {
-        return aircraftRestRepository.findById(id);
-    }
+    public Optional<Aircraft> findAircraftById(Long id) {return aircraftRestRepository.findById(id);}
 
-    public Optional<Aircraft> getAircraftByType(String type) {
-        return aircraftRestRepository.getAircraftByType(type);
+    public void deleteAircraftById(Long id) {aircraftRestRepository.deleteById(id);}
+
+    public Aircraft updateAircraft(Long id, Aircraft aircraft) {
+        Optional<Aircraft> existingAircraft = aircraftRestRepository.findById(id);
+
+        if (existingAircraft.isPresent()) {
+            Aircraft aircraftFromDb = existingAircraft.get();
+
+            aircraftFromDb.setType(aircraft.getType());
+            aircraftFromDb.setAirlineName(aircraft.getAirlineName());
+            aircraftFromDb.setNumOfPassengers(aircraft.getNumOfPassengers());
+
+            return aircraftRestRepository.save(aircraftFromDb);
+        } else {
+            throw new RuntimeException("Aircraft not found.");
+        }
     }
 }
