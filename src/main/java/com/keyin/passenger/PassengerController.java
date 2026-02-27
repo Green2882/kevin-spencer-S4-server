@@ -35,19 +35,15 @@ public class PassengerController {
         return ResponseEntity.ok(passengerService.createPassenger(passenger));
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> deletePassengerById(@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePassengerById(@PathVariable Long id){
         passengerService.deletePassengerById(id);
         return ResponseEntity.ok("Passenger with id " + id + " deleted successfully");
     }
 
-    @PutMapping
-    public ResponseEntity<String> put(@RequestParam Long id, @RequestBody Passenger passenger){
-        Optional<Passenger> passengerOptional = passengerService.findPassengerById(id);
-        passengerOptional.get().setFirstName(passenger.getFirstName());
-        passengerOptional.get().setLastName(passenger.getLastName());
-        passengerOptional.get().setPhoneNum(passenger.getPhoneNum());
-        passengerOptional.get().setCity(passenger.getCity());
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updatePassenger(@PathVariable Long id, @RequestBody Passenger passenger){
+        passengerService.updatePassenger(id, passenger); // saves
         return ResponseEntity.ok("Passenger with id " + id + " updated successfully");
     }
 
