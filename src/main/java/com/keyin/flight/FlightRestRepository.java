@@ -1,4 +1,6 @@
 package com.keyin.flight;
 
-public class FlightRestRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface FlightRestRepository extends CrudRepository<Flight, Long> {
 }
