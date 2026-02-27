@@ -1,6 +1,6 @@
 package com.keyin.aircraft;
 
-import com.keyin.city.City;
+import com.keyin.airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +46,4 @@ public class AircraftController {
         aircraftService.updateAircraft(id, aircraft); // saves
         return ResponseEntity.ok("Aircraft with id " + id + " updated successfully");
     }
-
-
 }
