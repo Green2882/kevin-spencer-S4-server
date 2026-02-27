@@ -46,6 +46,4 @@ public class PassengerController {
         passengerService.updatePassenger(id, passenger); // saves
         return ResponseEntity.ok("Passenger with id " + id + " updated successfully");
     }
-
-
 }
