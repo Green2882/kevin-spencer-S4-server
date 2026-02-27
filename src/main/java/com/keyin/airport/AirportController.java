@@ -36,18 +36,15 @@ public class AirportController {
         return ResponseEntity.ok(airportService.createAirport(airport));
     }
 
-    @DeleteMapping()
-    public ResponseEntity<String> deleteAirportById(@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAirportById(@PathVariable Long id){
         airportService.deleteAirportById(id);
         return ResponseEntity.ok("Airport with id " + id + " deleted successfully");
     }
 
-    @PutMapping("")
-    public ResponseEntity<String> put(@RequestParam Long id, @RequestBody Airport  airport){
-        Optional<Airport> airportOptional = airportService.findAirportById(id);
-        airportOptional.get().setName(airport.getName());
-        airportOptional.get().setCode(airport.getCode());
-        airportOptional.get().setCity(airport.getCity());
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateAirport(@PathVariable Long id, @RequestBody Airport airport){
+        airportService.updateAirport(id, airport); // saves
         return ResponseEntity.ok("Airport with id " + id + " updated successfully");
     }
 }
