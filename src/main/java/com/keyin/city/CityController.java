@@ -35,18 +35,15 @@ public class CityController {
         return ResponseEntity.ok(cityService.createCity(city));
     }
 
-    @DeleteMapping()
-    public ResponseEntity<String> deleteCityById(@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCityById(@PathVariable Long id){
         cityService.deleteCityById(id);
         return ResponseEntity.ok("City with id " + id + " deleted successfully");
     }
 
-    @PutMapping("")
-    public ResponseEntity<String> put(@RequestParam Long id, @RequestBody City city){
-        Optional<City> cityOptional = cityService.findCityById(id);
-        cityOptional.get().setName(city.getName());
-        cityOptional.get().setPopulation(city.getPopulation());
-        cityOptional.get().setState(city.getState());
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateCity(@PathVariable Long id, @RequestBody City city){
+        cityService.updateCity(id, city); // saves
         return ResponseEntity.ok("City with id " + id + " updated successfully");
     }
 
