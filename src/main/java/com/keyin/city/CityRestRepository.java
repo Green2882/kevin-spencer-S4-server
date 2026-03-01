@@ -1,4 +1,6 @@
 package com.keyin.city;
 
-public class CityRestRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface CityRestRepository extends CrudRepository<City, Long> {
 }

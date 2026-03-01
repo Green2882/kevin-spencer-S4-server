@@ -1,4 +1,6 @@
 package com.keyin.passenger;
 
-public class PassengerRestRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface PassengerRestRepository extends CrudRepository<Passenger, Long> {
 }

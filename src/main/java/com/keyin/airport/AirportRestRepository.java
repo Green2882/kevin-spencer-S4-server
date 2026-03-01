@@ -1,4 +1,22 @@
 package com.keyin.airport;
 
-public class AirportRestRepository {
-}
+import com.keyin.airport.Airport;
+import com.keyin.city.City;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+
+@Repository
+public interface AirportRestRepository extends CrudRepository<Airport, Long> {
+    Airport getAirportsByCity(City city);
+
+    Optional<Airport> findAirportByCity(City city);
+
+    Iterable<Airport> findAirportsByCity(City city);
+
+    Optional<Airport> findAirportByName(String name);
+
+    Optional<Airport> findAirportByCode(String code);
+}   
