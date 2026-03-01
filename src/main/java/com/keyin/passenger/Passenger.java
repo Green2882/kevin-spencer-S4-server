@@ -27,7 +27,7 @@ public class Passenger {
 
     public Passenger() {}
 
-    public long getId() { return id; }
+    public Long getId() { return id; }
 
     public String getFirstName() {
         return firstName;

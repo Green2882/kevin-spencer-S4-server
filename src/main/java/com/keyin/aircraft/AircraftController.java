@@ -1,6 +1,5 @@
 package com.keyin.aircraft;
 
-import com.keyin.airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +20,7 @@ public class AircraftController {
     }
 
     @GetMapping("/requestparam")
-    public ResponseEntity<Optional<Aircraft>>getByIdRequestParameter(@RequestParam Long id){
+    public ResponseEntity<Optional<Aircraft>> getByIdRequestParameter(@RequestParam Long id){
         return ResponseEntity.ok(aircraftService.findAircraftById(id));
     }
 
@@ -43,7 +42,12 @@ public class AircraftController {
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateAircraft(@PathVariable Long id, @RequestBody Aircraft aircraft){
-        aircraftService.updateAircraft(id, aircraft); // saves
+        aircraftService.updateAircraft(id, aircraft);
         return ResponseEntity.ok("Aircraft with id " + id + " updated successfully");
+    }
+
+    @PutMapping("/{id}/airports")
+    public ResponseEntity<Aircraft> updateAircraftAirports(@PathVariable Long id, @RequestBody Iterable<Long> airportIds) {
+        return ResponseEntity.ok(aircraftService.updateAircraftAirports(id, airportIds));
     }
 }
