@@ -1,5 +1,6 @@
 package com.keyin.city;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,9 +13,10 @@ public class City {
     private Long id;
     private String name;
     private String state;
-    private int population;
+    private Integer population;
 
-    public City(String name, String state, int population) {
+    @JsonIgnore
+    public City(String name, String state, Integer population) {
         this.name = name;
         this.state = state;
         this.population = population;
@@ -42,11 +44,11 @@ public class City {
         this.state = state;
     }
 
-    public int getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 
