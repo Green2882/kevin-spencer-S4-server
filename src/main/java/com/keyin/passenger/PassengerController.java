@@ -29,6 +29,11 @@ public class PassengerController {
         return ResponseEntity.ok(passengerService.findAllPassengers());
     }
 
+    @GetMapping("/airports-used")
+    public ResponseEntity<Iterable<java.util.Map<String, Object>>> getAirportsUsedByPassengers() {
+        return ResponseEntity.ok(passengerService.getAirportsUsedByPassengers());
+    }
+
 
     @PostMapping
     public ResponseEntity<Passenger> createPassenger(@RequestBody Passenger passenger){

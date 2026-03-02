@@ -1,9 +1,16 @@
 package com.keyin.passenger;
 
+import com.keyin.airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class PassengerService {
@@ -11,8 +18,8 @@ public class PassengerService {
     @Autowired
     private PassengerRestRepository passengerRestRepository;
 
-    public Passenger createPassenger(Passenger city){
-        return passengerRestRepository.save(city);
+    public Passenger createPassenger(Passenger passenger){
+        return passengerRestRepository.save(passenger);
     }
 
     public Iterable<Passenger> findAllPassengers(){
@@ -46,4 +53,29 @@ public class PassengerService {
         }
     }
 
+    public Iterable<Map<String, Object>> getAirportsUsedByPassengers() {
+        Iterable<Passenger> passengers = findAllPassengers();
+
+        List<Map<String, Object>> results = new ArrayList<>();
+
+        for (Passenger passenger : passengers) {
+            Set<Airport> airportsUsed = new HashSet<>();
+
+            if (passenger.getAircraft() != null) {
+                passenger.getAircraft().forEach(aircraft -> {
+                    if (aircraft.getAirports() != null) {
+                        airportsUsed.addAll(aircraft.getAirports());
+                    }
+                });
+            }
+
+            Map<String, Object> row = new HashMap<>();
+            row.put("passenger", passenger);
+            row.put("airports", airportsUsed);
+
+            results.add(row);
+        }
+
+        return results;
+    }
 }
