@@ -1,4 +1,6 @@
-package com.keyin.airline;
+package com.keyin.Airline;
 
-public class AirlineRestRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface AirlineRestRepository extends CrudRepository<Airline, Long> {
 }
