@@ -33,7 +33,7 @@ public class AirlineService {
         if (existingAirline.isPresent()) {
             Airline AirlineFromDb = existingAirline.get();
 
-            airlineFromDb.setAirlineName(airline.getAirlineName());
+            airlineFromDb.setAirlineName(airline.getName());
 
             return airlineRestRepository.save(airlineFromDb);
         } else {
