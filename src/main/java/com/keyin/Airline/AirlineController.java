@@ -16,12 +16,12 @@ public class AirlineController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Airline>> getAirlineById(@PathVariable Long id){
-        return ResponseEntity.ok(AirlineService.findAirlineById(id));
+        return ResponseEntity.ok(airlineService.findAirlineById(id));
     }
 
     @GetMapping("/requestparam")
     public ResponseEntity<Optional<Airline>> getByIdRequestParameter(@RequestParam Long id){
-        return ResponseEntity.ok(AirlineService.findAirlineById(id));
+        return ResponseEntity.ok(airlineService.findAirlineById(id));
     }
 
     @GetMapping()
