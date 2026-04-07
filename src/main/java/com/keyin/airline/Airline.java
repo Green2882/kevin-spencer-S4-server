@@ -10,7 +10,10 @@ public class Airline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @ManyToOne
     private Airport airport;
+
+    @ManyToOne
     private Flight flight;
 
     public Airline(String name) {
