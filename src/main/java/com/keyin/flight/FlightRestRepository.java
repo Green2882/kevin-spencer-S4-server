@@ -1,5 +1,8 @@
 package com.keyin.flight;
 
+import com.keyin.aircraft.Aircraft;
+import com.keyin.airport.Airport;
+import com.keyin.gate.Gate;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +22,6 @@ public interface FlightRestRepository extends CrudRepository<Flight, Long> {
     Iterable<Flight> findFlightsByDestinationAirport(Flight destinationAirport);
 
     Iterable<Flight> findFlightsByAircraft(Flight aircraft);
+
+    Iterable<Flight> findByGate(Gate gate);
 }

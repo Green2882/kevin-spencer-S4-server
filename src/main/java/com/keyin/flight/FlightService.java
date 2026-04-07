@@ -1,6 +1,6 @@
 package com.keyin.flight;
 
-import com.keyin.flight.FlightRestRepository;
+import com.keyin.gate.Gate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,16 +24,22 @@ public class FlightService {
         return flightRestRepository.findById(id);
     }
 
+    public Iterable<Flight> findByGate(Gate gate) {
+        return flightRestRepository.findByGate(gate);
+    }
+
     public void deleteFlightById(Long id){
-        flightRestRepository.deleteById(id);
+        if (flightRestRepository.existsById(id)) {
+            flightRestRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Flight not found with id: " + id);
+        }
     }
 
     public Flight updateFlight(Long id, Flight flight) {
-
         Optional<Flight> existingFlight = flightRestRepository.findById(id);
 
         if (existingFlight.isPresent()) {
-
             Flight flightFromDb = existingFlight.get();
 
             flightFromDb.setFlightNumber(flight.getFlightNumber());
@@ -42,13 +48,12 @@ public class FlightService {
             flightFromDb.setAircraft(flight.getAircraft());
             flightFromDb.setOriginAirport(flight.getOriginAirport());
             flightFromDb.setDestinationAirport(flight.getDestinationAirport());
+            flightFromDb.setGate(flight.getGate());
             flightFromDb.setPassengers(flight.getPassengers());
 
             return flightRestRepository.save(flightFromDb);
-
         } else {
-            throw new RuntimeException("Flight not found");
+            throw new RuntimeException("Flight not found with id: " + id);
         }
     }
-
 }

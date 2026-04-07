@@ -2,6 +2,7 @@ package com.keyin.flight;
 
 import com.keyin.aircraft.Aircraft;
 import com.keyin.airport.Airport;
+import com.keyin.gate.Gate;
 import com.keyin.passenger.Passenger;
 import jakarta.persistence.*;
 
@@ -25,20 +26,25 @@ public class Flight {
 
     @ManyToOne
     private Airport originAirport;
+
     @ManyToOne
     private Airport destinationAirport;
+
+    @ManyToOne
+    private Gate gate;
 
     @ManyToMany
     private Set<Passenger> passengers = new HashSet<>();
 
     public Flight(String flightNumber, LocalDateTime departureTime, LocalDateTime arrivalTime,
-                  Aircraft aircraft, Airport originAirport, Airport destinationAirport) {
+                  Aircraft aircraft, Airport originAirport, Airport destinationAirport, Gate gate) {
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.aircraft = aircraft;
         this.originAirport = originAirport;
         this.destinationAirport = destinationAirport;
+        this.gate = gate;
     }
 
     public Flight() {}
@@ -99,6 +105,14 @@ public class Flight {
         this.destinationAirport = destinationAirport;
     }
 
+    public Gate getGate() {
+        return gate;
+    }
+
+    public void setGate(Gate gate) {
+        this.gate = gate;
+    }
+
     public Set<Passenger> getPassengers() {
         return passengers;
     }
@@ -117,6 +131,7 @@ public class Flight {
                 ", aircraft=" + aircraft +
                 ", originAirport=" + originAirport +
                 ", destinationAirport=" + destinationAirport +
+                ", gate=" + gate +
                 ", passengers=" + passengers +
                 '}';
     }
