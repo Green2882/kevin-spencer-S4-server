@@ -1,4 +1,4 @@
-package com.keyin.Airline;
+package com.keyin.airline;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,9 +31,9 @@ public class AirlineService {
         Optional<Airline> existingAirline = airlineRestRepository.findById(id);
 
         if (existingAirline.isPresent()) {
-            Airline AirlineFromDb = existingAirline.get();
+            Airline airlineFromDb = existingAirline.get();
 
-            airlineFromDb.setAirlineName(airline.getName());
+            airlineFromDb.setName(airline.getName());
 
             return airlineRestRepository.save(airlineFromDb);
         } else {
