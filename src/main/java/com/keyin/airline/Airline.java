@@ -1,4 +1,4 @@
-package com.keyin.Airline;
+package com.keyin.airline;
 
 import com.keyin.airport.Airport;
 import com.keyin.flight.Flight;
@@ -12,11 +12,9 @@ public class Airline {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "airport_id")
     private Airport airport;
 
     @ManyToOne
-    @JoinColumn(name = "flight_id")
     private Flight flight;
 
     public Airline(String name) {

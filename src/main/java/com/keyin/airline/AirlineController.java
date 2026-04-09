@@ -1,4 +1,4 @@
-package com.keyin.Airline;
+package com.keyin.airline;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
